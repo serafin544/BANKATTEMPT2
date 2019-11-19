@@ -17,21 +17,18 @@ public class BillService {
     private BillRepository billRepository;
 
 
-
     //get all bills for specific account
-    public List<Bills> allBillsByAccountId(Long id){
+    public List<Bills> allBillsByAccountId(Long id) {
         List<Bills> listOfBills = new ArrayList<>();
         billRepository.findAccountById(id).forEach(listOfBills::add);
         return listOfBills;
     }
 
 
-
     //get bill by id
-    public Optional<Bills> getBillsById(Long id){
+    public Optional<Bills> getBillsById(Long id) {
         return billRepository.findById(id);
     }
-
 
 
     //get all bills for customer
@@ -50,7 +47,7 @@ public class BillService {
 
 
     //update a specific existing bill
-    public Bills updateBill( Bills bills, Long id) {
+    public Bills updateBill(Bills bills, Long id) {
         return billRepository.save(bills);
     }
 
@@ -60,3 +57,4 @@ public class BillService {
         billRepository.deleteById(id);
     }
 
+}
