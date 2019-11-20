@@ -1,6 +1,6 @@
 package com.example.MacFin.model;
 
-import com.example.MacFin.type.AcctType;
+import com.example.MacFin.type.Type;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class Account {
 
     @Column(name="Type")
     @Enumerated(EnumType.STRING)
-    private AcctType type;
+    private Type type;
 
     @Column(name="NICKNAME")
     private String nickName;
@@ -34,9 +34,9 @@ public class Account {
     public Account() {
     }
 
-    public Account(Long id, AcctType acctType, String nickName, int rewards, double balance, Long customerId) {
+    public Account(Long id, Type type, String nickName, int rewards, double balance, Long customerId) {
         this.id = id;
-        this.type = acctType;
+        this.type = type;
         this.nickName = nickName;
         this.rewards = rewards;
         this.balance = balance;
@@ -64,11 +64,11 @@ public class Account {
         this.id = id;
     }
 
-    public AcctType getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(AcctType type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
