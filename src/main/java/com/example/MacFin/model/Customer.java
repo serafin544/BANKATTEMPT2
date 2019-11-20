@@ -1,21 +1,34 @@
 package com.example.MacFin.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CUSTOMER_ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="CUSTOMER_ID")
     private Long id;
-    private String name;
-    private String address;
 
-    public Customer(Long id, String name, String address) {
+    @Column(name= "FIRST_NAME")
+    private String firstName;
+
+    @Column(name ="LAST_NAME")
+    private String lastName;
+
+
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @Size(min = 1, max = 10)
+    @OrderBy
+    private Set<Address> address;
+
+    public Customer(Long id, String firstName, String lastName, @Size(min = 1, max = 10) Set<Address> address) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
     }
 
@@ -27,19 +40,27 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getAddress() {
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Set<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Set<Address> address) {
         this.address = address;
     }
 

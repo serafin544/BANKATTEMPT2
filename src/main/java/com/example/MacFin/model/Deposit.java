@@ -1,21 +1,51 @@
 package com.example.MacFin.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Deposit {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String transactionDate;
-    private Double amount;
-    private String transactionType;
 
+    @Id
+    @Column(name = "DEPOSIT_ID")
+    private Long id;
+
+    @Column(name = "TYPE")
+    private String type;
+
+    @Column(name = "TRANSACTION_DATE")
+    private String transaction_date;
+
+    @Column(name = "STATUS")
+    private String status;
+
+
+    @Column(name = "PAYEE_ID")
+    private Long payee_id;
+
+    @Column(name = "MEDIUM")
+    private String medium;
+
+    @Column(name = "AMOUNT")
+    private Double amount;
+
+    @Column(name = "DESCRIPTION")
+    private String description;
+
+    public Deposit() {
+    }
+
+    public Deposit(Long id, String type, String transaction_date, String status, Long payee_id, String medium, Double amount, String description) {
+        this.id = id;
+        this.type = type;
+        this.transaction_date = transaction_date;
+        this.status = status;
+        this.payee_id = payee_id;
+        this.medium = medium;
+        this.amount = amount;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -25,12 +55,44 @@ public class Deposit {
         this.id = id;
     }
 
-    public String getTransactionDate() {
-        return transactionDate;
+    public String getType() {
+        return type;
     }
 
-    public void setTransactionDate(String transactionDate) {
-        this.transactionDate = transactionDate;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTransaction_date() {
+        return transaction_date;
+    }
+
+    public void setTransaction_date(String transaction_date) {
+        this.transaction_date = transaction_date;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Long getPayee_id() {
+        return payee_id;
+    }
+
+    public void setPayee_id(Long payee_id) {
+        this.payee_id = payee_id;
+    }
+
+    public String getMedium() {
+        return medium;
+    }
+
+    public void setMedium(String medium) {
+        this.medium = medium;
     }
 
     public Double getAmount() {
@@ -41,16 +103,14 @@ public class Deposit {
         this.amount = amount;
     }
 
-    public String getTransactionType() {
-        return transactionType;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTransactionType(String transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public Deposit(){
-
-
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
+
+
+

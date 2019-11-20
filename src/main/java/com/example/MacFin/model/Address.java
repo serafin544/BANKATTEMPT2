@@ -7,13 +7,23 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name= "ADDRESS_ID")
     private Long id;
-    private String street_number;
-    private String street_name;
+
+    @Column(name="STREET_NUMBER")
+    private String streetNumber;
+
+    @Column(name="STREET_NAME")
+    private String streetName;
+
+    @Column(name="CITY")
     private String city;
+
+    @Column(name="STATE")
     private String state;
+
+    @Column(name="ZIP")
     private String zip;
 
     public Address(){
@@ -28,20 +38,20 @@ public class Address {
         this.id = id;
     }
 
-    public String getStreet_number() {
-        return street_number;
+    public String getStreetNumber() {
+        return streetNumber;
     }
 
-    public void setStreet_number(String street_number) {
-        this.street_number = street_number;
+    public void setStreetNumber(String street_number) {
+        this.streetNumber = street_number;
     }
 
-    public String getStreet_name() {
-        return street_name;
+    public String getStreetName() {
+        return streetName;
     }
 
-    public void setStreet_name(String street_name) {
-        this.street_name = street_name;
+    public void setStreetName(String street_name) {
+        this.streetName = street_name;
     }
 
     public String getCity() {

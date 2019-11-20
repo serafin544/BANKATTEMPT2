@@ -2,10 +2,7 @@ package com.example.MacFin.model;
 
 import com.example.MacFin.type.AcctType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Account {
@@ -13,17 +10,25 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ACCOUNT_ID")
     private Long id;
 
-    private AcctType acctType;
+    @Column(name="Type")
+    @Enumerated(EnumType.STRING)
+    private AcctType type;
 
+    @Column(name="NICKNAME")
     private String nickName;
 
+    @Column(name="REWARDS")
     private int rewards;
 
+    @Column(name="BALANCE")
     private double balance;
 
+    @Column(name="CustomerID")
     private Long customerId;
+
 
 
     public Account() {
@@ -31,7 +36,7 @@ public class Account {
 
     public Account(Long id, AcctType acctType, String nickName, int rewards, double balance, Long customerId) {
         this.id = id;
-        this.acctType = acctType;
+        this.type = acctType;
         this.nickName = nickName;
         this.rewards = rewards;
         this.balance = balance;
@@ -43,7 +48,7 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", acctType=" + acctType +
+                ", acctType=" + type +
                 ", nickName='" + nickName + '\'' +
                 ", rewards=" + rewards +
                 ", balance=" + balance +
@@ -59,12 +64,12 @@ public class Account {
         this.id = id;
     }
 
-    public AcctType getAcctType() {
-        return acctType;
+    public AcctType getType() {
+        return type;
     }
 
-    public void setAcctType(AcctType acctType) {
-        this.acctType = acctType;
+    public void setType(AcctType type) {
+        this.type = type;
     }
 
     public String getNickName() {

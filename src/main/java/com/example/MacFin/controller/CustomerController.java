@@ -43,7 +43,7 @@ public class CustomerController {
         }
 
         @RequestMapping(method = RequestMethod.GET, value = "/customer/{customerId}")
-        public ResponseEntity<?> getCustomerById(@RequestBody Long customerId){
+        public ResponseEntity<?> getCustomerById(@PathVariable Long customerId){
          Optional<Customer> customer = customerService.getCustomerbyID( customerId );
 
          ResponseSetup r = new ResponseSetup(  );
